@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Goście</title>
+</head>
+<body>
+	<h1>Goście:</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Imię</th>
+				<th>Nazwisko</th>
+			</tr>
+		</thead>
+		<tbody>
+			<th:block th:each="guest : ${guests}">
+				<tr>
+					<td th:text="${guest.name}"></td>
+					<td th:text="${guest.surname}"></td>
+				</tr>
+			</th:block>
+		</tbody>
+	</table>
+	<br />
+	<h2>Dodaj gościa:</h2>
+	<form th:action="@{/}" th:object="${newGuest}" method="post">
+		Imię: <input type="text" th:field="*{name}" />
+		Nazwisko: <input type="text" th:field="*{surname}" />
+		<input type="submit" value="Dodaj" />
+	</form>
+</body>
+</html>
